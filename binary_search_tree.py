@@ -25,9 +25,23 @@ class BinarySearchTree:
     #The _insert method is a helper function, it will be used by insert() function later on.
     #It is recursive function, it will call itself to transverse the tree until the appropriate location for new node is found
     def _insert(self, node, key):
-        if node is None:
+        if node is None: #that is if there is no value in that node
+            #The below line creates a new Treenode instance with the provided key
             return TreeNode(key)
+        
+        #if the value of key is less, it is places in the left daughter node
         if key<node.key:
-            pass
+            #_insert method is recursively called to add the key to the left daughter node
+            node.left = self._insert(node.left, key)
 
+        # if the value of key is greater, it is placed in the right daughter node
+        elif key > node.key:
+            node.right = self._insert(node.right, key)
+
+        #returning the node structure to update the tree structure
+        return node
+    
+    #This function will be called by the user
+    def insert(self, key):
+        pass
     
